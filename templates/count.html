@@ -6,7 +6,7 @@
 {% block content %}
 
     <h1>There are {{ count }} words in your text</h1>
-    <h1 style="text-align:right;float:left;padding: 0 1em 0em 0">Your Text:</h1>
+    <h1 style="text-align:right;float:left;padding: 0 1em 0 0">Your Text:</h1>
     {{ fulltext|custom_filter:top_ten_coloring_dict }}
 <hr style="clear:bottom"/>
     {{ div| safe }}

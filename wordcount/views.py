@@ -1,12 +1,9 @@
-import re
-
 from bokeh.models import ColumnDataSource
-from bokeh.plotting import figure, output_file, show
+from bokeh.plotting import figure
 from bokeh.embed import components
 from bokeh.transform import factor_cmap
 from django.shortcuts import render, render_to_response
 from bokeh.palettes import Spectral11
-
 import operator
 
 def homepage(request):
