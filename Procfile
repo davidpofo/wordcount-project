@@ -1,1 +1,1 @@
-web: gunicorn django-wordcount-project.wsgi
+web gunicorn wordcount-project.wsgi
