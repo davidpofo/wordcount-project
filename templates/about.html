@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+{% block content %}
+<h1>About</h1>
+<p>This is a django webpp I made for practice. This project uses the web framework django, visualizes the word count data with bokeh, styles with bootstrap, and
+is deployed on the cloud platform heroku. </p>
+<a href="https://github.com/davidpofo" style="text-align:left;float:left;padding: 0 1em 0em 0" >By David Ampofo</a>
+<a href="{% url 'home' %}" style="text-align:left;float:left;">Return Home</a>
+<hr style="clear:both;"/>
+{% endblock %}
+
+</body>
+</html>

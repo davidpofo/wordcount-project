@@ -1,0 +1,14 @@
+body{
+    background:#DDD8D8;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#sidenav{
+    margin-top:10px
+}
+
+#categories{
+    margin-top:10px
+}

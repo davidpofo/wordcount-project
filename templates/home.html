@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+</head>
+<body>
+{% block content %}
+<h1>Word Count Visualizer</h1>
+<form action="{% url 'count' %}">
+    <textarea cols="80" rows="8" name="fulltext"></textarea>
+    <br/>
+    <input type="submit" value="Click to Count">
+</form>
+
+{% endblock %}
+</body>
+</html>
