@@ -1,4 +1,4 @@
-from bokeh.models import ColumnDataSource
+from bokeh.models import ColumnDataSource, HoverTool
 from bokeh.plotting import figure
 from bokeh.embed import components
 from bokeh.transform import factor_cmap
@@ -50,7 +50,12 @@ def count(request):
     p.y_range.end = counts[0] + 1
     p.legend.orientation = "horizontal"
     p.legend.location = "top_center"
+    hover = HoverTool()
+    hover.tooltips = [
+        ('Count', '@counts'),
+    ]
 
+    p.add_tools(hover)
     #store components
     script, div = components(p)
 
