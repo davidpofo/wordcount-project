@@ -9,7 +9,9 @@
 {% block content %}
 <h1>Word Count Visualizer</h1>
 <form action="{% url 'count' %}">
-    <textarea cols="80" rows="8" name="fulltext"></textarea>
+     <textarea cols="80" rows="8" name="fulltext" placeholder="Enter your text here!"></textarea>
+
+    <textarea cols="45" rows="8" name="ignorelist" placeholder="Enter words to ignore separated by a comma."></textarea>
     <br/>
     <input type="submit" value="Click to Count">
 </form>
