@@ -1,16 +1,23 @@
+import operator
+
+from bokeh.embed import components
 from bokeh.models import ColumnDataSource, HoverTool
 from bokeh.plotting import figure
-from bokeh.embed import components
 from bokeh.transform import factor_cmap
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
-from bokeh.palettes import Spectral11
-import operator
+
 
 def homepage(request):
     return render(request, 'home.html')
 def about(request):
     return render(request, 'about.html')
 def count(request):
+    # Checking for values in manual request
+    split_request= str(request).split("fulltext=")[1].split("&")[0]
+    if not split_request:
+        return HttpResponseRedirect("/") # redirect back home
+
     # words list from full text
     fulltext = request.GET['fulltext']
     wordlist = [word.strip().replace(',', '').replace('.', '').replace('-', '') for word in fulltext.split()]
@@ -52,13 +59,13 @@ def count(request):
     counts = list(y)
     source = ColumnDataSource(data=dict(words=words, counts=counts))
     # Dictionary for word filtering
-    colorpal = Spectral11
+    colorpal = ['#d53e4f', '#9e0142', '#804600', '#744e2e', '#554800','#1e824c', '#20603c', '#0071bc', '#046b99', '#7023b7', '#591d74']
     top_ten_coloring_dict = dict(zip(words, colorpal))
 
 
     p = figure(x_range=words, plot_height=350, plot_width= 850, x_axis_label = "Word Name", y_axis_label = "Frequency")
     p.vbar(x='words', top='counts', width=0.9, source=source, legend="words",
-           line_color='white', fill_color=factor_cmap('words', palette=Spectral11,factors=words))
+           line_color='white', fill_color=factor_cmap('words', palette=colorpal,factors=words))
     p.xgrid.grid_line_color = None
     p.y_range.start = 0
     p.y_range.end = counts[0] + 1

@@ -6,8 +6,7 @@
 {% block content %}
 
     <h1>There are {{ count }} words in your text</h1>
-    <h1 style="text-align:right;float:left;padding: 0 1em 0 0">Your Text:</h1>
-    {{ fulltext|custom_filter:top_ten_coloring_dict }}
+    <p style="border:2px; border-style:solid; border-color:#000000; padding: .3em;">{{ fulltext|custom_filter:top_ten_coloring_dict }}</p>
 <hr style="clear:bottom"/>
     {{ div| safe }}
 {% endblock %}
