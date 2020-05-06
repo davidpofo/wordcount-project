@@ -83,5 +83,7 @@ def count(request):
     script, div = components(p)
 
     return render_to_response('count.html', {'top_ten_coloring_dict': top_ten_coloring_dict, 'fulltext':fulltext, 'count':len(wordlist), 'sortwords':sorted(top_ten_words.items(),
-                                                                                                                                                           key=operator.itemgetter(1), reverse= True), 'script':script, 'div':div})
+                                                                                                                                                           key=operator.itemgetter(1),
+                                                                                                                                                            reverse= True), 'script':script,
+                                             'bokehdiv':div})
 
