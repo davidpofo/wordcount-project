@@ -19,8 +19,9 @@ def count(request):
         return HttpResponseRedirect("/") # redirect back home
 
     # words list from full text
-    fulltext = request.GET['fulltext']
-    wordlist = [word.strip().replace(',', '').replace('.', '').replace('-', '') for word in fulltext.split()]
+    fulltext = request.GET['fulltext'].replace('<', '').replace('>', '')
+
+    wordlist = [word.strip().replace(',', '').replace('.', '').replace('-', '').replace('<', '').replace('>', '') for word in fulltext.split()]
 
     # dictionary of words to ignore updates with articles
     ignorelist = {}
@@ -31,7 +32,7 @@ def count(request):
     except Exception as ex:
         print("No words were entered here!{}".format(ex))
 
-    articles = {'a': '', 'an': '', 'and': '', 'the': ''}
+    articles = {'a': '', 'an': '', 'and': '', 'the': '', '<': '', '>': ''}
     ignorelist.update(articles)
     # Creating a dictionary of counts for each word in the word list
     worddictionary = {}
